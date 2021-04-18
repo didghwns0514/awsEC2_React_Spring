@@ -1,4 +1,4 @@
-package com.example.myapp_spring;
+package com.hojun.myapp_spring;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
