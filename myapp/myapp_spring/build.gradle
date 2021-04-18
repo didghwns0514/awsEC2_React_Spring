@@ -8,6 +8,14 @@ bootJar{
 	jar.enabled = true // 반드시 jar build 실행
 }
 
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'com.example.myapp_spring.MyappSpringApplication'
+		)
+	}
+}
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
