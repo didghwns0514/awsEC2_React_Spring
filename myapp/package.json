@@ -43,8 +43,8 @@
 
   "husky" : {
     "hooks": {
-      "pre-commit" : "npm run build",
-      "pre-push" : "echo 'Building React before commit and now pushing!'"
+      "pre-commit" : "npm run build && echo 'Commiting your build result!';",
+      "pre-push" : "echo 'Pushing your code to github!';"
     }
   } 
 }
