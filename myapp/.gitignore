@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+# /build # ec2 instance fails to build.. resource short-hand
 
 # misc
 .DS_Store

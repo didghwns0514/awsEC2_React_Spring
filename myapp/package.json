@@ -36,5 +36,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "husky": "^6.0.0"
+  },
+
+  "husky" : {
+    "hooks": {
+      "pre-push" : [
+        "echo 'Building React before push!'",
+        "npm run build"
+      ]
+    }
+  } 
 }
