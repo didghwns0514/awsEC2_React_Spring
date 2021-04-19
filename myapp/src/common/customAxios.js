@@ -10,7 +10,7 @@ export default function customAxios(url, callback) {
       headers: {"Access-Control-Allow-Origin": "*"},
 
 
-      baseURL: 'http://localhost:8080', //현재 spring-boot 백엔드 주소
+      baseURL: '127.0.0.1:8080', //현재 spring-boot 백엔드 주소
       withCredentials: false,
     }
   ).then(function (response) {
