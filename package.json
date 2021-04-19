@@ -16,6 +16,7 @@
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "build": "export PORT=3000 && react-scripts build",
+    "build-window": "set PORT=3000 && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install"
@@ -43,7 +44,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build",
+      "pre-commit": "echo 'Building React before commit!' && npm run build-window",
       "pre-push": "echo 'Pushing your code to github!';"
     }
   }
