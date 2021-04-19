@@ -4,5 +4,4 @@
 
 echo 'Building React before commit!'
 git add .
-git commit -m "    - React build result included"
 npm run build-window
