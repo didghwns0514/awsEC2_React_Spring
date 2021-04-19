@@ -2,5 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
-echo 'Building React before commit!' 
+echo 'Building React before commit!'
+git add .
+git commit -m "    - React build result included"
 npm run build-window
