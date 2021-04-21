@@ -12,7 +12,7 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
-script: "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --scan"
+script: "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --scan -y"
 
 # CI 실행 완료시 메일로 알람
 notifications:
