@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "env-cmd": "^10.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
@@ -16,6 +17,8 @@
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "build": "export PORT=3000 && react-scripts build",
+    "start:env": "env-cmd -f .env.dev npm run-script start",
+    "build:env": "env-cmd -f .env.deploy npm run-script build-window",
     "build-window": "set PORT=3000 && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -40,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "husky": "^6.0.0"
+    "husky": "^6.0.0",
+    "nginx": "^1.0.2"
   },
   "husky": {
     "hooks": {
