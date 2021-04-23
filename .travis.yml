@@ -1,19 +1,50 @@
 # https://travis-ci.com
-language: java
-jdk:
-  - openjdk8
+# https://stackoverflow.com/questions/27644586/how-to-set-up-travis-ci-with-multiple-languages
 
-branches:
-  only:
-    - main
+jobs: 
+  include: 
+    - language: java
+      jdk:
+        - openjdk8
 
-# Travis CI 서버의 Home
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.gradle'
+      branches:
+        only:
+          - main
 
-script: "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
+      # Travis CI 서버의 Home
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.gradle'
+
+      script: 
+        - "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
+
+    - language: node-js
+      node_js:
+        - 'stable'
+      
+      cache:
+        directories:
+          - '$HOME/.m3/repository'
+      
+      script:
+        - npm test
+        - npm run-script build:env-travis
+
+# deploy할 aws s3
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: myapp-react-spring-bucket # 생성한 S3 버킷
+    region: us-east-2
+    skip_cleanup: true
+    acl: public_read
+    wait-until-deployed: true
+    on:
+      repo: didghwns0514/awsEC2_React_Spring #Github 주소
+      branch: main  
 
 # CI 실행 완료시 메일로 알람
 notifications:

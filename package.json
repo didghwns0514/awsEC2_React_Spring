@@ -19,6 +19,7 @@
     "build": "export PORT=3000 && react-scripts build",
     "start:env": "env-cmd -f .env.dev npm run-script start",
     "build:env": "env-cmd -f .env.deploy npm run-script build-window",
+    "build:env-travis": "env-cmd -f .env.deploy npm run-script build",
     "build-window": "set PORT=3000 && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -1,6 +1,7 @@
 # file
 *.pem
 *.ppk
+new_user_credentials.csv
 
 
 ################ react
