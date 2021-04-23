@@ -4,45 +4,45 @@
 jobs: 
   include: 
     - stage: Build-Java
-      - language: java
-        jdk:
-          - openjdk8
+      language: java
+      jdk:
+        - openjdk8
 
-        branches:
-          only:
-            - main
+      branches:
+        only:
+          - main
 
-        # Travis CI 서버의 Home
-        cache:
-          directories:
-            #- '$HOME/.m2/repository'
-            - '$HOME/build/didghwns0514/myapp_spring/.gradle'
+      # Travis CI 서버의 Home
+      cache:
+        directories:
+          #- '$HOME/.m2/repository'
+          - '$HOME/build/didghwns0514/myapp_spring/.gradle'
 
-        script: 
-          #  /home/travis/build/didghwns0514/awsEC2_React_Spring/node_modules
-          #- "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
-          - "echo $HOME"
-          - "pwd"
-          - "ls -a"
-          - "chmod +x ./myapp_spring/gradlew && cd myapp_spring &&./gradlew clean build --info"
+      script: 
+        #  /home/travis/build/didghwns0514/awsEC2_React_Spring/node_modules
+        #- "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
+        - "echo $HOME"
+        - "pwd"
+        - "ls -a"
+        - "chmod +x ./myapp_spring/gradlew && cd myapp_spring &&./gradlew clean build --info"
     
     - stage: Build-Node_js # next build
-      - language: node_js
-        node_js:
-          - 'stable'
-        
-        cache:
-          directories:
-            #- '$HOME/.m3/repository'
-            - '$HOME/build/didghwns0514/.tmp_react'
-        
-        script:
-          #- npm test  # no apt js test yet 
-          - npm run-script build:env-travis
+      language: node_js
+      node_js:
+        - 'stable'
+      
+      cache:
+        directories:
+          #- '$HOME/.m3/repository'
+          - '$HOME/build/didghwns0514/.tmp_react'
+      
+      script:
+        #- npm test  # no apt js test yet 
+        - npm run-script build:env-travis
 
     - stage: Before-Deploy
       # https://devconnected.com/how-to-copy-directory-on-linux/
-      - before_deploy:
+      before_deploy:
         - mkdir -p ./myapp_deploy
         - mkdir -p ./deploy
         # - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
@@ -52,23 +52,23 @@ jobs:
 
     - stage: Deploy
         # deploy할 aws s3
-      - deploy:
-        - provider: s3
-          local_dir: deploy
-          access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
-          secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
-          bucket: myapp-react-spring-bucket # 생성한 S3 버킷
-          region: us-east-2
-          skip_cleanup: true
-          acl: public_read
-          wait-until-deployed: true
-          on:
-            repo: didghwns0514/awsEC2_React_Spring #Github 주소
-            branch: main  
+      deploy:
+        provider: s3
+        local_dir: deploy
+        access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+        secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+        bucket: myapp-react-spring-bucket # 생성한 S3 버킷
+        region: us-east-2
+        skip_cleanup: true
+        acl: public_read
+        wait-until-deployed: true
+        on:
+          repo: didghwns0514/awsEC2_React_Spring #Github 주소
+          branch: main  
 
     - stage: Notify
       # CI 실행 완료시 메일로 알람
-      - notifications:
+        notifications:
         email:
           recipients:
             - didghwns0514@gmail.com 
