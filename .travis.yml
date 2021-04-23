@@ -20,8 +20,8 @@ jobs:
       script: 
         #  /home/travis/build/didghwns0514/awsEC2_React_Spring/node_modules
         #- "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
-        - echo $HOME
-        - ll
+        - "echo $HOME"
+        - "ll"
         - "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew clean build --info"
 
     - language: node_js
