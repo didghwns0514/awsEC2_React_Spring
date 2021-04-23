@@ -32,9 +32,20 @@ jobs:
         #- npm test  # no apt js test yet
         - npm run-script build:env-travis
 
+# https://devconnected.com/how-to-copy-directory-on-linux/
+before_deploy:
+  - mkdir -p myapp_deploy
+  - mkdir -p deploy
+  - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
+  - cp -R ./build/* ./myapp_deploy
+  - zip -r myapp_deploy *
+  - mv myapp_deploy.zip deploy/myapp_deploy.zip
+
+
 # deploy할 aws s3
 deploy:
   - provider: s3
+    local_dir: deploy
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
     bucket: myapp-react-spring-bucket # 생성한 S3 버킷
