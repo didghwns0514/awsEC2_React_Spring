@@ -46,7 +46,7 @@ jobs:
         - mkdir -p ./myapp_deploy
         - mkdir -p ./deploy
         # - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
-        # - cp -R ./build/* ./myapp_deploy
+        # - cp -R ./build/* ./myapp_deploy 
         - zip -r awsEC2_React_Spring *
         - mv awsEC2_React_Spring.zip ./deploy/awsEC2_React_Spring.zip
 
