@@ -18,7 +18,8 @@ jobs:
           - '$HOME/.gradle'
 
       script: 
-        - "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
+        #- "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
+        - "chmod +x ./myapp_spring/gradlew && ./myapp_spring/gradlew build --info"
 
     - language: node_js
       node_js:
