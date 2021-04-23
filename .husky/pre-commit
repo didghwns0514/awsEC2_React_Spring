@@ -3,5 +3,5 @@
 
 
 echo 'Building React before commit!'
-npm run-script build:env
-git add .
+#npm run-script build:env
+#git add .
