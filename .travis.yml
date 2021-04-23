@@ -18,8 +18,9 @@ jobs:
           - '$HOME/.gradle'
 
       script: 
+        #  /home/travis/build/didghwns0514/awsEC2_React_Spring/node_modules
         #- "chmod +x ./myapp_spring/gradlew && cd myapp_spring && ./gradlew build --info"
-        - "chmod +x ./myapp_spring/gradlew && ./myapp_spring/gradlew build --info"
+        - "chmod +x /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_spring/gradlew && /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_spring/gradlew build --info"
 
     - language: node_js
       node_js:
@@ -35,12 +36,12 @@ jobs:
 
 # https://devconnected.com/how-to-copy-directory-on-linux/
 before_deploy:
-  - mkdir -p myapp_deploy
-  - mkdir -p deploy
-  - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
-  - cp -R ./build/* ./myapp_deploy
-  - zip -r myapp_deploy *
-  - mv myapp_deploy.zip deploy/myapp_deploy.zip
+  - mkdir -p /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_deploy
+  - mkdir -p /home/travis/build/didghwns0514/awsEC2_React_Spring/deploy
+  - cp -R /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_spring/build/libs/*.jar /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_deploy # jar to deploy
+  - cp -R /home/travis/build/didghwns0514/awsEC2_React_Spring/build/* /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_deploy
+  - zip -r /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_deploy *
+  - mv /home/travis/build/didghwns0514/awsEC2_React_Spring/myapp_deploy.zip /home/travis/build/didghwns0514/awsEC2_React_Spring/deploy/myapp_deploy.zip
 
 
 # deploy할 aws s3
