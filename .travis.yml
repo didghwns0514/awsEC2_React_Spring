@@ -15,7 +15,7 @@ jobs:
       cache:
         directories:
           - '$HOME/.m2/repository'
-          #- '$HOME/.gradle'
+          - '$HOME/myapp_spring/.gradle'
 
       script: 
         #  /home/travis/build/didghwns0514/awsEC2_React_Spring/node_modules
