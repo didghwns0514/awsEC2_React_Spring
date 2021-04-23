@@ -37,7 +37,7 @@ jobs:
             - '$HOME/build/didghwns0514/.tmp_react'
         
         script:
-          #- npm test  # no apt js test yet
+          #- npm test  # no apt js test yet 
           - npm run-script build:env-travis
 
     - stage: Before-Deploy
