@@ -6,9 +6,11 @@ jobs:
     - language: java
       jdk:
         - openjdk8
+
       branches:
         only:
           - main
+
       # Travis CI 서버의 Home
       cache:
         directories:
@@ -22,22 +24,20 @@ jobs:
         - "pwd"
         - "ls -a"
         - "chmod +x ./myapp_spring/gradlew && cd myapp_spring &&./gradlew clean build --info"
-    
-
 
 
 # https://devconnected.com/how-to-copy-directory-on-linux/
-- before_deploy:
+before_deploy:
   - mkdir -p ./myapp_deploy
   - mkdir -p ./deploy
   # - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
-  # - cp -R ./build/* ./myapp_deploy 
+  # - cp -R ./build/* ./myapp_deploy
   - zip -r awsEC2_React_Spring *
   - mv awsEC2_React_Spring.zip ./deploy/awsEC2_React_Spring.zip
 
 
 # deploy할 aws s3
-- deploy:
+deploy:
   - provider: s3
     local_dir: deploy
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -51,9 +51,8 @@ jobs:
       repo: didghwns0514/awsEC2_React_Spring #Github 주소
       branch: main  
 
-
 # CI 실행 완료시 메일로 알람
-- notifications:
+notifications:
   email:
     recipients:
       - didghwns0514@gmail.com 
