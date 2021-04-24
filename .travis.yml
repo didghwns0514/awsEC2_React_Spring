@@ -30,9 +30,9 @@ jobs:
       before_deploy:
         - mkdir -p ./myapp_deploy
         - mkdir -p ./deploy
-        # - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
+        - cp -R ./build/libs/*.jar ./myapp_deploy # jar to deploy
         # - cp -R ./build/* ./myapp_deploy
-        - zip -r ZIP_Spring *
+        - zip -r ZIP_Spring ./myapp_deploy/*
         - mv ZIP_Spring.zip ./deploy/ZIP_Spring.zip
 
 
@@ -73,7 +73,7 @@ jobs:
         - mkdir -p ./deploy
         # - cp -R ./myapp_spring/build/libs/*.jar ./myapp_deploy # jar to deploy
         # - cp -R ./build/* ./myapp_deploy
-        - zip -r ZIP_React *
+        - zip -r ZIP_React ./build/*
         - mv ZIP_React.zip ./deploy/ZIP_React.zip
 
 
