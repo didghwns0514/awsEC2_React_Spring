@@ -23,18 +23,7 @@ jobs:
         - "ls -a"
         - "chmod +x ./myapp_spring/gradlew && cd myapp_spring &&./gradlew clean build --info"
     
-      # - language: node_js
-      #   node_js:
-      #     - 'stable'
-        
-      #   cache:
-      #     directories:
-      #       #- '$HOME/.m3/repository'
-      #       - '$HOME/build/didghwns0514/.tmp_react'
-        
-      #   script:
-      #     #- npm test  # no apt js test yet 
-      #     - npm run-script build:env-travis
+
 
 
 # https://devconnected.com/how-to-copy-directory-on-linux/
