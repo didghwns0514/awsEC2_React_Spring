@@ -2,6 +2,7 @@
 *.pem
 *.ppk
 new_user_credentials.csv
+IAM_keys.txt
 
 
 ################ react
